@@ -124,6 +124,23 @@ cake.addEventListener("click", () => {
 	if (navigator.vibrate) {
 		navigator.vibrate([50 * intensity, 30, 80 * intensity]);
 	}
+
+	if (navigator.vibrate && window.innerWidth < 600) {
+		navigator.vibrate(80);
+	}
+	
 	message.classList.remove("hidden");
 	message.classList.add("show");
 });
+
+let lastTouchEnd = 0;
+
+document.addEventListener("touchend", function (e) {
+	const now = Date.now();
+
+	if (now - lastTouchEnd <= 300) {
+		e.preventDefault();
+	}
+
+	lastTouchEnd = now;
+}, { passive: false });

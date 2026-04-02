@@ -8,8 +8,7 @@ body {
 	font-family: Arial, sans-serif;
 	color: white;
 	overflow: hidden;
-	transform: scale(1.6);
-	transform-origin: center;
+	touch-action: manipulation;
 }
 
 .container {
@@ -198,4 +197,18 @@ canvas {
 	inset: 0;
 	pointer-events: none;
 	z-index: 999;
+}
+
+@media (min-width: 1024px) {
+	body {
+		transform: scale(1.6);
+		transform-origin: center;
+	}
+}
+
+@media (max-width: 600px) {
+	body {
+		transform: scale(1.2);
+		transform-origin: center;
+	}
 }
