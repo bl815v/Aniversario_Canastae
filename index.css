@@ -12,12 +12,6 @@ body {
 	transform-origin: center;
 }
 
-html,
-body {
-	touch-action: manipulation;
-	overscroll-behavior: none;
-}
-
 .container {
 	text-align: center;
 	position: relative;
