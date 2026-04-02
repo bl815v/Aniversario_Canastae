@@ -121,6 +121,9 @@ cake.addEventListener("click", () => {
 		confettiRunning = true;
 	}
 
+	if (navigator.vibrate) {
+		navigator.vibrate([50 * intensity, 30, 80 * intensity]);
+	}
 	message.classList.remove("hidden");
 	message.classList.add("show");
 });
