@@ -3,23 +3,39 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Aniversario Canastae</title>
+	<title>Canastae Aniversario</title>
 	<link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
 	<div class="container">
+
 		<div class="cake" id="cake">
-			<div class="candle candle-left">
+
+			<div class="tier top-tier">
+				<div class="cream"></div>
+			</div>
+
+			<div class="tier bottom-tier">
+				<div class="cream"></div>
+			</div>
+
+			<div class="candle left">
+				<div class="wick" id="wick1"></div>
 				<div class="flame" id="flame1"></div>
 			</div>
-			<div class="candle candle-right">
+
+			<div class="candle right">
+				<div class="wick" id="wick2"></div>
 				<div class="flame" id="flame2"></div>
 			</div>
 		</div>
 
-		<h1 id="message" class="hidden">🎉 Feliz Aniversario, Canastae 🎉</h1>
+		<h1 id="message" class="hidden">¡Feliz Aniversario, Canastae!</h1>
+
+		<canvas id="confetti"></canvas>
+
 	</div>
 
 	<script src="index.js"></script>

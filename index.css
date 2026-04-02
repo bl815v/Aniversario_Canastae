@@ -7,36 +7,88 @@ body {
 	height: 100vh;
 	font-family: Arial, sans-serif;
 	color: white;
+	overflow: hidden;
 }
 
 .container {
 	text-align: center;
+	position: relative;
 }
 
 .cake {
-	width: 200px;
-	height: 120px;
-	background: #ff6b81;
-	border-radius: 10px;
 	position: relative;
-	margin: 0 auto;
 	cursor: pointer;
+	z-index: 1;
+}
+
+.tier {
+	margin: 0 auto;
+	border-radius: 12px;
+	position: relative;
+	overflow: hidden;
+}
+
+.bottom-tier {
+	width: 220px;
+	height: 120px;
+	background: #ff6fa5;
+}
+
+.top-tier {
+	width: 140px;
+	height: 80px;
+	background: #ff85b5;
+	position: relative;
+	top: 20px;
+	z-index: 2;
+}
+
+.cream {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 22px;
+	background: #a259ff;
+}
+
+.cream::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 12px;
+	background: radial-gradient(circle at 10px 0px, #a259ff 10px, transparent 11px);
+	background-size: 20px 12px;
 }
 
 .candle {
 	width: 10px;
 	height: 40px;
-	background: #fff;
+	background: white;
 	position: absolute;
-	top: -40px;
+	z-index: 3;
 }
 
-.candle-left {
-	left: 60px;
+.left {
+	left: 45%;
+	top: -10px;
 }
 
-.candle-right {
-	right: 60px;
+.right {
+	left: 55%;
+	top: -10px;
+}
+
+.wick {
+	width: 2px;
+	height: 6px;
+	background: rgb(92, 92, 92);
+	position: absolute;
+	top: -6px;
+	left: 4px;
+	z-index: 4;
 }
 
 .flame {
@@ -45,8 +97,10 @@ body {
 	background: orange;
 	border-radius: 50%;
 	position: absolute;
-	top: -15px;
+	top: -20px;
+	left: 0;
 	animation: flicker 0.2s infinite;
+	z-index: 5;
 }
 
 @keyframes flicker {
@@ -55,7 +109,7 @@ body {
 	}
 
 	50% {
-		transform: scale(1.2);
+		transform: scale(1.3);
 	}
 
 	100% {
@@ -63,12 +117,58 @@ body {
 	}
 }
 
+.smoke {
+	width: 10px;
+	height: 10px;
+	background: gray;
+	border-radius: 50%;
+	position: absolute;
+	animation: smokeUp 1s ease-out forwards;
+	opacity: 0.7;
+	z-index: 5;
+}
+
+@keyframes smokeUp {
+	0% {
+		transform: translateY(0) scale(1);
+		opacity: 0.7;
+	}
+
+	100% {
+		transform: translateY(-40px) scale(2);
+		opacity: 0;
+	}
+}
+
 .hidden {
 	opacity: 0;
+	transform: scale(0.5);
 	margin-top: 20px;
-	transition: opacity 1s;
 }
 
 .show {
-	opacity: 1;
+	animation: popIn 1s forwards;
+}
+
+@keyframes popIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+
+	70% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+canvas {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 999;
 }
